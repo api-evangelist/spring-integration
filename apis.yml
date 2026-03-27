@@ -1,0 +1,45 @@
+aid: spring-integration
+name: Spring Integration
+description: >-
+  Spring Integration extends the Spring programming model to support enterprise
+  integration patterns, providing lightweight messaging and integration with
+  external systems via declarative adapters.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - iPaaS
+  - Integration
+  - Spring
+  - Java
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/spring-integration/refs/heads/main/apis.yml
+created: '2026-03-27'
+modified: '2026-03-27'
+specificationVersion: '0.19'
+apis:
+  - aid: spring-integration:spring-integration
+    name: Spring Integration
+    description: >-
+      Spring Integration extends the Spring programming model to support enterprise
+      integration patterns, providing lightweight messaging and integration with
+      external systems via declarative adapters.
+    humanURL: https://spring.io/projects/spring-integration
+    tags:
+      - iPaaS
+      - Integration
+      - Java
+    properties:
+      - type: Documentation
+        url: https://docs.spring.io/spring-integration/reference/
+      - type: Getting Started
+        url: https://spring.io/guides/gs/integration
+common:
+  - type: Website
+    url: https://spring.io/projects/spring-integration
+  - type: Documentation
+    url: https://docs.spring.io/spring-integration/reference/
+  - type: GitHub Organization
+    url: https://github.com/spring-projects/spring-integration
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
