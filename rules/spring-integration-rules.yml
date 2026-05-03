@@ -1,0 +1,48 @@
+extends: spectral:oas
+rules:
+  spring-integration-operation-id:
+    description: All operations must have operationId
+    message: "Missing operationId at {{path}}"
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: operationId
+      function: truthy
+
+  spring-integration-tags-required:
+    description: Operations must include at least one tag
+    message: "Operation at {{path}} must have tags"
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: tags
+      function: truthy
+
+  spring-integration-summary-title-case:
+    description: Summaries must use Title Case
+    message: "Summary '{{value}}' should use Title Case"
+    severity: warn
+    given: "$.paths[*][*].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z]"
+
+  spring-integration-management-paths:
+    description: Management API paths should be descriptive and use kebab-case
+    message: "Path should use kebab-case segments"
+    severity: info
+    given: "$.paths"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(/[a-z][a-zA-Z0-9]*({[^}]+})?)*$"
+
+  spring-integration-response-descriptions:
+    description: All responses should have descriptions
+    message: "Response at {{path}} is missing description"
+    severity: warn
+    given: "$.paths[*][*].responses[*]"
+    then:
+      field: description
+      function: truthy

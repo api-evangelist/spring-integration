@@ -1,0 +1,242 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Spring Integration Management API"
+  description: "Management and monitoring REST API for Spring Integration components. Provides channel statistics, handler metrics, adapter lifecycle control, and integration graph visualization."
+  tags:
+    - Integration
+    - Management
+    - Messaging
+    - Monitoring
+    - Spring
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      SPRING_INTEGRATION_BASE_URL: SPRING_INTEGRATION_BASE_URL
+
+capability:
+  consumes:
+    - type: http
+      namespace: spring-integration-mgmt
+      baseUri: "{{env.SPRING_INTEGRATION_BASE_URL}}/api"
+      description: "Spring Integration management REST API"
+      resources:
+        - name: channels
+          path: /channels
+          description: "Message channel statistics and listing"
+          operations:
+            - name: list-channels
+              method: GET
+              description: "List all message channels with statistics"
+              inputParameters:
+                - name: page
+                  in: query
+                  type: integer
+                  required: false
+                - name: size
+                  in: query
+                  type: integer
+                  required: false
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-channel
+              method: GET
+              description: "Get channel details and statistics"
+              inputParameters:
+                - name: name
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: handlers
+          path: /handlers
+          description: "Message handler metrics"
+          operations:
+            - name: list-handlers
+              method: GET
+              description: "List all message handlers with metrics"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-handler
+              method: GET
+              description: "Get handler details and metrics"
+              inputParameters:
+                - name: name
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: adapters
+          path: /inboundChannelAdapters
+          description: "Inbound adapter lifecycle management"
+          operations:
+            - name: list-adapters
+              method: GET
+              description: "List all inbound channel adapters"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: control-adapter
+              method: POST
+              description: "Start or stop an inbound adapter"
+              inputParameters:
+                - name: name
+                  in: path
+                  type: string
+                  required: true
+              body:
+                type: json
+                data:
+                  action: "{{tools.action}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: graph
+          path: /graph
+          description: "Integration flow visualization graph"
+          operations:
+            - name: get-graph
+              method: GET
+              description: "Get the complete integration flow graph"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: spring-integration-mgmt-api
+      resources:
+        - path: /v1/channels
+          name: channels
+          description: "Message channel monitoring"
+          operations:
+            - method: GET
+              name: list-channels
+              description: "List message channels and statistics"
+              call: "spring-integration-mgmt.list-channels"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/handlers
+          name: handlers
+          description: "Message handler monitoring"
+          operations:
+            - method: GET
+              name: list-handlers
+              description: "List message handlers and metrics"
+              call: "spring-integration-mgmt.list-handlers"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/graph
+          name: graph
+          description: "Integration flow graph"
+          operations:
+            - method: GET
+              name: get-graph
+              description: "Get integration flow visualization"
+              call: "spring-integration-mgmt.get-graph"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: spring-integration-mgmt-mcp
+      transport: http
+      tools:
+        - name: list-channels
+          description: "List all Spring Integration message channels with send counts and performance statistics"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "spring-integration-mgmt.list-channels"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-channel-stats
+          description: "Get detailed statistics for a specific Spring Integration message channel"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "spring-integration-mgmt.get-channel"
+          with:
+            name: "tools.channelName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-handlers
+          description: "List all Spring Integration message handlers with handle counts and duration metrics"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "spring-integration-mgmt.list-handlers"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-integration-graph
+          description: "Get the complete Spring Integration flow graph for visualization and analysis"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "spring-integration-mgmt.get-graph"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: start-adapter
+          description: "Start a Spring Integration inbound channel adapter"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: true
+          call: "spring-integration-mgmt.control-adapter"
+          with:
+            name: "tools.adapterName"
+            action: "start"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: stop-adapter
+          description: "Stop a Spring Integration inbound channel adapter"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: true
+          call: "spring-integration-mgmt.control-adapter"
+          with:
+            name: "tools.adapterName"
+            action: "stop"
+          outputParameters:
+            - type: object
+              mapping: "$."

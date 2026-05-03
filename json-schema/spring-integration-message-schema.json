@@ -1,0 +1,129 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://spring.io/projects/spring-integration/schemas/message",
+  "title": "Spring Integration Message",
+  "description": "Represents a Spring Integration message comprising a payload and message headers",
+  "type": "object",
+  "required": ["payload"],
+  "properties": {
+    "payload": {
+      "description": "The message payload - can be any type",
+      "oneOf": [
+        { "type": "string" },
+        { "type": "object" },
+        { "type": "array" },
+        { "type": "number" },
+        { "type": "boolean" }
+      ]
+    },
+    "headers": {
+      "$ref": "#/definitions/MessageHeaders"
+    }
+  },
+  "definitions": {
+    "MessageHeaders": {
+      "title": "Spring Integration Message Headers",
+      "description": "Standard and custom headers attached to a Spring Integration message",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Unique message identifier"
+        },
+        "timestamp": {
+          "type": "integer",
+          "description": "Message creation timestamp in milliseconds since epoch"
+        },
+        "contentType": {
+          "type": "string",
+          "description": "MIME type of the payload"
+        },
+        "correlationId": {
+          "description": "Correlation identifier linking related messages"
+        },
+        "replyChannel": {
+          "type": "string",
+          "description": "Channel name or bean reference for sending replies"
+        },
+        "errorChannel": {
+          "type": "string",
+          "description": "Channel name or bean reference for error messages"
+        },
+        "sequenceNumber": {
+          "type": "integer",
+          "description": "Position in a split/aggregated message sequence"
+        },
+        "sequenceSize": {
+          "type": "integer",
+          "description": "Total number of messages in a sequence"
+        },
+        "sequenceDetails": {
+          "type": "array",
+          "description": "Nested sequence tracking for nested splits"
+        },
+        "expiration": {
+          "type": "integer",
+          "description": "Message expiration timestamp"
+        },
+        "priority": {
+          "type": "integer",
+          "description": "Message priority for priority queues"
+        }
+      },
+      "additionalProperties": true
+    },
+    "IntegrationChannel": {
+      "title": "Spring Integration Channel Statistics",
+      "description": "Runtime statistics for a Spring Integration message channel",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Channel bean name"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "DirectChannel",
+            "QueueChannel",
+            "PublishSubscribeChannel",
+            "ExecutorChannel",
+            "PriorityChannel",
+            "RendezvousChannel",
+            "NullChannel"
+          ],
+          "description": "Channel implementation type"
+        },
+        "sendCount": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Total number of successful sends"
+        },
+        "sendErrorCount": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Total number of failed sends"
+        },
+        "meanSendDuration": {
+          "type": "number",
+          "description": "Mean send duration in milliseconds"
+        },
+        "minSendDuration": {
+          "type": "number"
+        },
+        "maxSendDuration": {
+          "type": "number"
+        },
+        "queueSize": {
+          "type": "integer",
+          "description": "Current queue depth (for QueueChannel)"
+        },
+        "remainingCapacity": {
+          "type": "integer",
+          "description": "Remaining queue capacity"
+        }
+      }
+    }
+  }
+}

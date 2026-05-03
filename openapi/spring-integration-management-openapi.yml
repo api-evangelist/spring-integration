@@ -1,0 +1,351 @@
+openapi: 3.0.3
+info:
+  title: Spring Integration Management API
+  description: >-
+    The Spring Integration Management REST API exposes endpoints for monitoring
+    and controlling Spring Integration components at runtime. It provides access
+    to message channel statistics, message handler metrics, integration graph
+    visualization, and component lifecycle management (start/stop).
+  version: 6.3.0
+  contact:
+    name: Spring Team
+    url: https://spring.io/projects/spring-integration
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+  - url: http://localhost:8080/api
+    description: Default management API base path
+paths:
+  /channels:
+    get:
+      operationId: listChannels
+      summary: List All Message Channels
+      description: Returns all registered Spring Integration message channels and their statistics
+      tags:
+        - Channels
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 0
+        - name: size
+          in: query
+          schema:
+            type: integer
+            default: 20
+      responses:
+        '200':
+          description: List of channels
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChannelList'
+  /channels/{name}:
+    get:
+      operationId: getChannel
+      summary: Get Channel Details
+      description: Returns statistics and configuration for a specific message channel
+      tags:
+        - Channels
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Channel bean name
+      responses:
+        '200':
+          description: Channel details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Channel'
+        '404':
+          description: Channel not found
+  /handlers:
+    get:
+      operationId: listHandlers
+      summary: List All Message Handlers
+      description: Returns all registered message handlers with their performance metrics
+      tags:
+        - Handlers
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 0
+        - name: size
+          in: query
+          schema:
+            type: integer
+            default: 20
+      responses:
+        '200':
+          description: List of handlers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HandlerList'
+  /handlers/{name}:
+    get:
+      operationId: getHandler
+      summary: Get Handler Details
+      description: Returns metrics for a specific message handler
+      tags:
+        - Handlers
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Handler bean name
+      responses:
+        '200':
+          description: Handler details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Handler'
+        '404':
+          description: Handler not found
+  /inboundChannelAdapters:
+    get:
+      operationId: listInboundAdapters
+      summary: List Inbound Channel Adapters
+      description: Returns all inbound channel adapters and their running status
+      tags:
+        - Adapters
+      responses:
+        '200':
+          description: List of inbound adapters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdapterList'
+  /inboundChannelAdapters/{name}:
+    get:
+      operationId: getInboundAdapter
+      summary: Get Inbound Adapter Details
+      description: Returns details and status for a specific inbound channel adapter
+      tags:
+        - Adapters
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Adapter details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Adapter'
+        '404':
+          description: Adapter not found
+    post:
+      operationId: controlInboundAdapter
+      summary: Start or Stop Inbound Adapter
+      description: Controls the lifecycle of an inbound channel adapter
+      tags:
+        - Adapters
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: string
+                  enum: [start, stop]
+      responses:
+        '200':
+          description: Adapter state changed
+        '404':
+          description: Adapter not found
+  /graph:
+    get:
+      operationId: getIntegrationGraph
+      summary: Get Integration Graph
+      description: >-
+        Returns the complete integration flow graph showing all channels,
+        handlers, and their connections for visualization and analysis
+      tags:
+        - Graph
+      responses:
+        '200':
+          description: Integration graph
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationGraph'
+  /messageHistory:
+    get:
+      operationId: getMessageHistory
+      summary: Get Message History Configuration
+      description: Returns the current message history tracking configuration
+      tags:
+        - History
+      responses:
+        '200':
+          description: Message history config
+          content:
+            application/json:
+              schema:
+                type: object
+  /controlBus:
+    post:
+      operationId: sendControlBusCommand
+      summary: Send Control Bus Command
+      description: Sends a SpEL expression command to the Spring Integration Control Bus
+      tags:
+        - Control
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              type: string
+              example: "@myPoller.start()"
+      responses:
+        '200':
+          description: Command executed
+        '400':
+          description: Invalid command
+components:
+  schemas:
+    Channel:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+          description: Channel type (DirectChannel, QueueChannel, PublishSubscribeChannel, etc.)
+        sendCount:
+          type: integer
+          format: int64
+        sendErrorCount:
+          type: integer
+          format: int64
+        meanSendRate:
+          type: number
+        meanErrorRate:
+          type: number
+        meanSendDuration:
+          type: number
+        links:
+          type: array
+          items:
+            type: object
+    ChannelList:
+      type: object
+      properties:
+        channels:
+          type: array
+          items:
+            $ref: '#/components/schemas/Channel'
+        page:
+          type: object
+    Handler:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        handleCount:
+          type: integer
+          format: int64
+        handleErrorCount:
+          type: integer
+          format: int64
+        meanHandleRate:
+          type: number
+        meanHandleDuration:
+          type: number
+        inputChannelName:
+          type: string
+    HandlerList:
+      type: object
+      properties:
+        handlers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Handler'
+        page:
+          type: object
+    Adapter:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        running:
+          type: boolean
+        outputChannelName:
+          type: string
+    AdapterList:
+      type: object
+      properties:
+        adapters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Adapter'
+    IntegrationGraph:
+      type: object
+      properties:
+        contentDescriptor:
+          type: object
+          properties:
+            providerVersion:
+              type: string
+            providerFormatVersion:
+              type: number
+            provider:
+              type: string
+        nodes:
+          type: array
+          items:
+            type: object
+            properties:
+              nodeId:
+                type: integer
+              name:
+                type: string
+              componentType:
+                type: string
+              integrationPatternType:
+                type: string
+        links:
+          type: array
+          items:
+            type: object
+            properties:
+              from:
+                type: integer
+              to:
+                type: integer
+              type:
+                type: string
+tags:
+  - name: Adapters
+  - name: Channels
+  - name: Control
+  - name: Graph
+  - name: Handlers
+  - name: History

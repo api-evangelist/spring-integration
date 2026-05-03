@@ -1,0 +1,167 @@
+name: Spring Integration Vocabulary
+description: Domain vocabulary for Spring Integration framework and Enterprise Integration Patterns (EIP)
+version: 6.3.0
+created: '2026-05-02'
+modified: '2026-05-02'
+terms:
+  - term: Enterprise Integration Pattern (EIP)
+    definition: Messaging patterns documented by Hohpe and Woolf for connecting enterprise applications; the design basis for Spring Integration
+    related:
+      - Message Channel
+      - Message Router
+      - Message Transformer
+    tags:
+      - Core
+      - Pattern
+
+  - term: Message
+    definition: The core data transfer object in Spring Integration consisting of a payload and a collection of message headers
+    related:
+      - Payload
+      - MessageHeaders
+      - MessageBuilder
+    tags:
+      - Core
+
+  - term: Message Channel
+    definition: The pipe in pipe-and-filter architecture that transports messages between components; can be point-to-point or pub-sub
+    related:
+      - DirectChannel
+      - QueueChannel
+      - PublishSubscribeChannel
+    tags:
+      - Core
+      - Messaging
+
+  - term: DirectChannel
+    definition: A point-to-point message channel that delivers messages synchronously to a single subscriber in the calling thread
+    related:
+      - Message Channel
+      - QueueChannel
+    tags:
+      - Channel
+      - Messaging
+
+  - term: QueueChannel
+    definition: A buffering message channel that stores messages in a queue for asynchronous delivery to a single subscriber
+    related:
+      - Message Channel
+      - DirectChannel
+      - Poller
+    tags:
+      - Channel
+      - Async
+
+  - term: PublishSubscribeChannel
+    definition: A fan-out channel that delivers the same message to all registered subscribers
+    related:
+      - Message Channel
+      - Event-Driven
+    tags:
+      - Channel
+      - Pub/Sub
+
+  - term: Message Endpoint
+    definition: Any component that connects application code to the messaging system (service activators, transformers, gateways)
+    related:
+      - Service Activator
+      - Transformer
+      - Router
+      - Filter
+    tags:
+      - Core
+      - Pattern
+
+  - term: Service Activator
+    definition: A Spring Integration endpoint that invokes a service method when a message is received on its input channel
+    related:
+      - Message Endpoint
+      - Handler
+    tags:
+      - Endpoint
+      - Pattern
+
+  - term: Transformer
+    definition: A message endpoint that modifies the message payload or headers before passing it to the output channel
+    related:
+      - Message Endpoint
+      - Converter
+    tags:
+      - Endpoint
+      - Pattern
+
+  - term: Router
+    definition: A message endpoint that determines which channel a message should be sent to based on content or headers
+    related:
+      - Message Endpoint
+      - HeaderValueRouter
+      - PayloadTypeRouter
+    tags:
+      - Endpoint
+      - Routing
+
+  - term: Splitter
+    definition: A message endpoint that splits a single message into multiple smaller messages sent to the output channel
+    related:
+      - Aggregator
+      - Message Endpoint
+    tags:
+      - Endpoint
+      - Pattern
+
+  - term: Aggregator
+    definition: A message endpoint that combines multiple correlated messages into a single output message
+    related:
+      - Splitter
+      - Correlation
+      - Release Strategy
+    tags:
+      - Endpoint
+      - Pattern
+
+  - term: Inbound Channel Adapter
+    definition: A source endpoint that creates messages from external systems (file, HTTP, JMS, AMQP) and sends them to a channel
+    related:
+      - Channel Adapter
+      - Message Channel
+      - Poller
+    tags:
+      - Adapter
+      - Integration
+
+  - term: Outbound Channel Adapter
+    definition: A sink endpoint that sends messages to an external system (database, message broker, HTTP endpoint)
+    related:
+      - Channel Adapter
+      - Message Channel
+    tags:
+      - Adapter
+      - Integration
+
+  - term: Messaging Gateway
+    definition: A bidirectional endpoint that exposes a simple Java interface to send messages and receive replies from integration flows
+    related:
+      - Request-Reply
+      - Message Endpoint
+    tags:
+      - Gateway
+      - Pattern
+
+  - term: Poller
+    definition: A scheduling mechanism that periodically triggers polling channel adapters or endpoints
+    related:
+      - QueueChannel
+      - Inbound Channel Adapter
+      - Cron
+    tags:
+      - Scheduling
+      - Configuration
+
+  - term: Integration Graph
+    definition: A runtime representation of all Spring Integration components and their connections, exportable via the management API
+    related:
+      - Management API
+      - Monitoring
+    tags:
+      - Management
+      - Observability

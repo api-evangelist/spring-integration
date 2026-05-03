@@ -1,0 +1,68 @@
+{
+  "example": "Get Integration Graph",
+  "description": "Example response from GET /api/graph showing a Spring Integration message flow",
+  "request": {
+    "method": "GET",
+    "url": "http://localhost:8080/api/graph",
+    "headers": {
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "contentDescriptor": {
+        "providerVersion": "6.3.0",
+        "providerFormatVersion": 1.2,
+        "provider": "spring-integration"
+      },
+      "nodes": [
+        {
+          "nodeId": 1,
+          "name": "inputChannel",
+          "componentType": "org.springframework.integration.channel.DirectChannel",
+          "integrationPatternType": "channel",
+          "integrationPatternCategory": "messaging_channel"
+        },
+        {
+          "nodeId": 2,
+          "name": "transformingHandler",
+          "componentType": "org.springframework.integration.transformer.MessageTransformingHandler",
+          "integrationPatternType": "transformer",
+          "integrationPatternCategory": "message_transformation"
+        },
+        {
+          "nodeId": 3,
+          "name": "outputChannel",
+          "componentType": "org.springframework.integration.channel.DirectChannel",
+          "integrationPatternType": "channel",
+          "integrationPatternCategory": "messaging_channel"
+        },
+        {
+          "nodeId": 4,
+          "name": "fileInboundAdapter",
+          "componentType": "org.springframework.integration.file.FileReadingMessageSource",
+          "integrationPatternType": "inbound_channel_adapter",
+          "integrationPatternCategory": "messaging_endpoint",
+          "running": true
+        },
+        {
+          "nodeId": 5,
+          "name": "routerHandler",
+          "componentType": "org.springframework.integration.router.HeaderValueRouter",
+          "integrationPatternType": "router",
+          "integrationPatternCategory": "message_routing"
+        }
+      ],
+      "links": [
+        { "from": 4, "to": 1, "type": "output" },
+        { "from": 1, "to": 2, "type": "input" },
+        { "from": 2, "to": 3, "type": "output" },
+        { "from": 3, "to": 5, "type": "input" }
+      ]
+    }
+  }
+}

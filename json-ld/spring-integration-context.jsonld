@@ -1,0 +1,66 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "eip": "https://www.enterpriseintegrationpatterns.com/vocab/",
+    "springint": "https://spring.io/projects/spring-integration/vocab/",
+
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+
+    "MessageChannel": {
+      "@id": "eip:MessageChannel",
+      "@type": "@id"
+    },
+    "MessageHandler": {
+      "@id": "eip:MessageHandler",
+      "@type": "@id"
+    },
+    "MessageEndpoint": {
+      "@id": "eip:MessageEndpoint",
+      "@type": "@id"
+    },
+    "Message": {
+      "@id": "eip:Message",
+      "@type": "@id"
+    },
+    "MessageRouter": {
+      "@id": "eip:MessageRouter",
+      "@type": "@id"
+    },
+    "MessageFilter": {
+      "@id": "eip:MessageFilter",
+      "@type": "@id"
+    },
+    "MessageTranslator": {
+      "@id": "eip:MessageTranslator",
+      "@type": "@id"
+    },
+    "ServiceActivator": {
+      "@id": "eip:ServiceActivator",
+      "@type": "@id"
+    },
+    "Aggregator": {
+      "@id": "eip:Aggregator",
+      "@type": "@id"
+    },
+    "Splitter": {
+      "@id": "eip:Splitter",
+      "@type": "@id"
+    },
+
+    "payload": { "@id": "eip:payload" },
+    "headers": { "@id": "eip:headers" },
+    "correlationId": { "@id": "eip:correlationId" },
+    "replyChannel": { "@id": "eip:replyChannel" },
+    "errorChannel": { "@id": "eip:errorChannel" },
+    "sequenceNumber": { "@id": "eip:sequenceNumber" },
+    "sequenceSize": { "@id": "eip:sequenceSize" },
+
+    "channelType": { "@id": "springint:channelType" },
+    "handlerType": { "@id": "springint:handlerType" },
+    "sendCount": { "@id": "springint:sendCount" },
+    "handleCount": { "@id": "springint:handleCount" }
+  }
+}

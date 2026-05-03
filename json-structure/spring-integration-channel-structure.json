@@ -1,0 +1,51 @@
+{
+  "name": "Spring Integration Channel Structure",
+  "description": "Structural documentation of Spring Integration channel and handler statistics",
+  "version": "6.3.0",
+  "structures": [
+    {
+      "name": "ChannelStatistics",
+      "description": "Runtime statistics for a Spring Integration message channel",
+      "fields": [
+        { "name": "name", "type": "string", "description": "Channel bean name", "required": true },
+        { "name": "type", "type": "string", "description": "Channel implementation type" },
+        { "name": "sendCount", "type": "integer", "description": "Total successful message sends" },
+        { "name": "sendErrorCount", "type": "integer", "description": "Total failed message sends" },
+        { "name": "meanSendRate", "type": "number", "description": "Mean send rate per second" },
+        { "name": "meanSendDuration", "type": "number", "description": "Mean send duration in milliseconds" },
+        { "name": "minSendDuration", "type": "number", "description": "Minimum send duration" },
+        { "name": "maxSendDuration", "type": "number", "description": "Maximum send duration" }
+      ]
+    },
+    {
+      "name": "HandlerStatistics",
+      "description": "Runtime statistics for a Spring Integration message handler",
+      "fields": [
+        { "name": "name", "type": "string", "description": "Handler bean name", "required": true },
+        { "name": "type", "type": "string", "description": "Handler implementation type" },
+        { "name": "handleCount", "type": "integer", "description": "Total messages handled" },
+        { "name": "handleErrorCount", "type": "integer", "description": "Total handling errors" },
+        { "name": "meanHandleRate", "type": "number", "description": "Mean handle rate per second" },
+        { "name": "meanHandleDuration", "type": "number", "description": "Mean handling duration in milliseconds" },
+        { "name": "inputChannelName", "type": "string", "description": "Subscribed input channel" }
+      ]
+    },
+    {
+      "name": "IntegrationGraph",
+      "description": "Complete integration flow graph for visualization",
+      "fields": [
+        { "name": "contentDescriptor", "type": "object", "description": "Graph format metadata" },
+        { "name": "contentDescriptor.providerVersion", "type": "string", "description": "Spring Integration version" },
+        { "name": "nodes", "type": "array", "description": "All graph nodes (channels, handlers, adapters)" },
+        { "name": "nodes[].nodeId", "type": "integer", "description": "Unique node identifier" },
+        { "name": "nodes[].name", "type": "string", "description": "Component bean name" },
+        { "name": "nodes[].componentType", "type": "string", "description": "Component implementation class" },
+        { "name": "nodes[].integrationPatternType", "type": "string", "description": "EIP pattern type" },
+        { "name": "links", "type": "array", "description": "Directed edges between nodes" },
+        { "name": "links[].from", "type": "integer", "description": "Source node ID" },
+        { "name": "links[].to", "type": "integer", "description": "Target node ID" },
+        { "name": "links[].type", "type": "string", "description": "Link type (input, output, error)" }
+      ]
+    }
+  ]
+}

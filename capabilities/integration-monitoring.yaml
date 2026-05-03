@@ -1,0 +1,184 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Spring Integration - Integration Monitoring"
+  description: >-
+    Workflow capability for monitoring and managing Spring Integration message
+    flows at runtime. Provides channel statistics, handler metrics, adapter
+    lifecycle control, and integration flow graph visualization. Used by integration
+    engineers, platform operations teams, and system administrators.
+  tags:
+    - Enterprise Integration
+    - Integration
+    - Management
+    - Messaging
+    - Monitoring
+    - Spring
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      SPRING_INTEGRATION_BASE_URL: SPRING_INTEGRATION_BASE_URL
+
+capability:
+  consumes:
+    - import: spring-integration-mgmt
+      location: ./shared/spring-integration-management.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: integration-monitoring-api
+      description: "Unified REST API for Spring Integration monitoring and management."
+      resources:
+        - path: /v1/channels
+          name: channels
+          description: "Message channel statistics and monitoring"
+          operations:
+            - method: GET
+              name: list-channels
+              description: "List all message channels with send counts and performance stats"
+              call: "spring-integration-mgmt.list-channels"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/channels/{name}
+          name: channel-detail
+          description: "Individual channel statistics"
+          operations:
+            - method: GET
+              name: get-channel
+              description: "Get detailed statistics for a specific channel"
+              call: "spring-integration-mgmt.get-channel"
+              with:
+                name: "rest.name"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/handlers
+          name: handlers
+          description: "Message handler performance metrics"
+          operations:
+            - method: GET
+              name: list-handlers
+              description: "List all message handlers with handle counts and durations"
+              call: "spring-integration-mgmt.list-handlers"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/adapters
+          name: adapters
+          description: "Inbound adapter lifecycle management"
+          operations:
+            - method: GET
+              name: list-adapters
+              description: "List all inbound channel adapters and their running state"
+              call: "spring-integration-mgmt.list-adapters"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/graph
+          name: flow-graph
+          description: "Integration flow visualization"
+          operations:
+            - method: GET
+              name: get-flow-graph
+              description: "Get the complete integration flow graph"
+              call: "spring-integration-mgmt.get-graph"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: integration-monitoring-mcp
+      transport: http
+      description: "MCP server for AI-assisted Spring Integration monitoring and operations."
+      tools:
+        - name: list-message-channels
+          description: "List all Spring Integration message channels with send counts, error counts, and performance statistics"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "spring-integration-mgmt.list-channels"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-channel-statistics
+          description: "Get detailed runtime statistics for a specific Spring Integration message channel by name"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "spring-integration-mgmt.get-channel"
+          with:
+            name: "tools.channelName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-message-handlers
+          description: "List all Spring Integration message handlers with handle counts and mean processing duration"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "spring-integration-mgmt.list-handlers"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-handler-metrics
+          description: "Get performance metrics for a specific Spring Integration message handler"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "spring-integration-mgmt.get-handler"
+          with:
+            name: "tools.handlerName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-flow-graph
+          description: "Retrieve the complete Spring Integration message flow graph showing channels, handlers, and connections"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "spring-integration-mgmt.get-graph"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: start-inbound-adapter
+          description: "Start a stopped Spring Integration inbound channel adapter to resume message ingestion"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: true
+          call: "spring-integration-mgmt.control-adapter"
+          with:
+            name: "tools.adapterName"
+            action: "start"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: stop-inbound-adapter
+          description: "Stop a running Spring Integration inbound channel adapter to pause message ingestion"
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: true
+          call: "spring-integration-mgmt.control-adapter"
+          with:
+            name: "tools.adapterName"
+            action: "stop"
+          outputParameters:
+            - type: object
+              mapping: "$."
