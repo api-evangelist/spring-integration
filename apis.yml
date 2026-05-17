@@ -39,7 +39,7 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.spring.io/spring-integration/docs/current/reference/html/http.html
-      - type: GitHub Repository
+      - type: GitHubRepository
         url: https://github.com/spring-projects/spring-integration
       - type: OpenAPI
         url: openapi/spring-integration-http-openapi.yml
@@ -98,11 +98,11 @@ common:
     url: https://spring.io/projects/spring-integration
   - type: Documentation
     url: https://docs.spring.io/spring-integration/reference/
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/spring-projects/spring-integration
-  - type: Getting Started
+  - type: GettingStarted
     url: https://spring.io/guides/gs/integration
-  - type: Stack Overflow
+  - type: StackOverflow
     url: https://stackoverflow.com/questions/tagged/spring-integration
   - type: Maven Repository
     url: https://mvnrepository.com/artifact/org.springframework.integration
