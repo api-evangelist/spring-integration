@@ -1,0 +1,122 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Spring Integration Management API — Handlers
+  description: 'Spring Integration Management API — Handlers. 2 operations. Lead operation: List All Message Handlers. Self-contained
+    Naftiko capability covering one Spring Integration business surface.'
+  tags:
+  - Spring Integration
+  - Handlers
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SPRING_INTEGRATION_API_KEY: SPRING_INTEGRATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: management-handlers
+    baseUri: http://localhost:8080/api
+    description: Spring Integration Management API — Handlers business capability. Self-contained, no shared references.
+    resources:
+    - name: handlers
+      path: /handlers
+      operations:
+      - name: listhandlers
+        method: GET
+        description: List All Message Handlers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: page
+          in: query
+          type: integer
+        - name: size
+          in: query
+          type: integer
+    - name: handlers-name
+      path: /handlers/{name}
+      operations:
+      - name: gethandler
+        method: GET
+        description: Get Handler Details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          description: Handler bean name
+          required: true
+  exposes:
+  - type: rest
+    namespace: management-handlers-rest
+    port: 8080
+    description: REST adapter for Spring Integration Management API — Handlers. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/handlers
+      name: handlers
+      description: REST surface for handlers.
+      operations:
+      - method: GET
+        name: listhandlers
+        description: List All Message Handlers
+        call: management-handlers.listhandlers
+        with:
+          page: rest.page
+          size: rest.size
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/handlers/{name}
+      name: handlers-name
+      description: REST surface for handlers-name.
+      operations:
+      - method: GET
+        name: gethandler
+        description: Get Handler Details
+        call: management-handlers.gethandler
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: management-handlers-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Spring Integration Management API — Handlers. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-all-message-handlers
+      description: List All Message Handlers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-handlers.listhandlers
+      with:
+        page: tools.page
+        size: tools.size
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-handler-details
+      description: Get Handler Details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-handlers.gethandler
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.

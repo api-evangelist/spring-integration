@@ -1,0 +1,160 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Spring Integration HTTP Inbound Gateway API — Gateway
+  description: 'Spring Integration HTTP Inbound Gateway API — Gateway. 3 operations. Lead operation: Send Message and Receive
+    Reply. Self-contained Naftiko capability covering one Spring Integration business surface.'
+  tags:
+  - Spring Integration
+  - Gateway
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SPRING_INTEGRATION_API_KEY: SPRING_INTEGRATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: http-gateway
+    baseUri: http://localhost:8080
+    description: Spring Integration HTTP Inbound Gateway API — Gateway business capability. Self-contained, no shared references.
+    resources:
+    - name: integration-gateway
+      path: /integration/gateway
+      operations:
+      - name: sendandreceive
+        method: POST
+        description: Send Message and Receive Reply
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: integration-gateway-path
+      path: /integration/gateway/{path}
+      operations:
+      - name: sendgetrequest
+        method: GET
+        description: Send GET Request to Integration Gateway
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: path
+          in: path
+          type: string
+          description: Configurable path segment mapped to message header
+          required: true
+      - name: sendpostrequest
+        method: POST
+        description: Send POST Request to Integration Gateway
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: path
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: http-gateway-rest
+    port: 8080
+    description: REST adapter for Spring Integration HTTP Inbound Gateway API — Gateway. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/integration/gateway
+      name: integration-gateway
+      description: REST surface for integration-gateway.
+      operations:
+      - method: POST
+        name: sendandreceive
+        description: Send Message and Receive Reply
+        call: http-gateway.sendandreceive
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/integration/gateway/{path}
+      name: integration-gateway-path
+      description: REST surface for integration-gateway-path.
+      operations:
+      - method: GET
+        name: sendgetrequest
+        description: Send GET Request to Integration Gateway
+        call: http-gateway.sendgetrequest
+        with:
+          path: rest.path
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: sendpostrequest
+        description: Send POST Request to Integration Gateway
+        call: http-gateway.sendpostrequest
+        with:
+          path: rest.path
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: http-gateway-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Spring Integration HTTP Inbound Gateway API — Gateway. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: send-message-and-receive-reply
+      description: Send Message and Receive Reply
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: http-gateway.sendandreceive
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: send-get-request-integration-gateway
+      description: Send GET Request to Integration Gateway
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: http-gateway.sendgetrequest
+      with:
+        path: tools.path
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: send-post-request-integration-gateway
+      description: Send POST Request to Integration Gateway
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: http-gateway.sendpostrequest
+      with:
+        path: tools.path
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

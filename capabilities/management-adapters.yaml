@@ -1,0 +1,149 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Spring Integration Management API — Adapters
+  description: 'Spring Integration Management API — Adapters. 3 operations. Lead operation: List Inbound Channel Adapters.
+    Self-contained Naftiko capability covering one Spring Integration business surface.'
+  tags:
+  - Spring Integration
+  - Adapters
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SPRING_INTEGRATION_API_KEY: SPRING_INTEGRATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: management-adapters
+    baseUri: http://localhost:8080/api
+    description: Spring Integration Management API — Adapters business capability. Self-contained, no shared references.
+    resources:
+    - name: inboundChannelAdapters
+      path: /inboundChannelAdapters
+      operations:
+      - name: listinboundadapters
+        method: GET
+        description: List Inbound Channel Adapters
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: inboundChannelAdapters-name
+      path: /inboundChannelAdapters/{name}
+      operations:
+      - name: getinboundadapter
+        method: GET
+        description: Get Inbound Adapter Details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+      - name: controlinboundadapter
+        method: POST
+        description: Start or Stop Inbound Adapter
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: management-adapters-rest
+    port: 8080
+    description: REST adapter for Spring Integration Management API — Adapters. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/inboundchanneladapters
+      name: inboundchanneladapters
+      description: REST surface for inboundChannelAdapters.
+      operations:
+      - method: GET
+        name: listinboundadapters
+        description: List Inbound Channel Adapters
+        call: management-adapters.listinboundadapters
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/inboundchanneladapters/{name}
+      name: inboundchanneladapters-name
+      description: REST surface for inboundChannelAdapters-name.
+      operations:
+      - method: GET
+        name: getinboundadapter
+        description: Get Inbound Adapter Details
+        call: management-adapters.getinboundadapter
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: controlinboundadapter
+        description: Start or Stop Inbound Adapter
+        call: management-adapters.controlinboundadapter
+        with:
+          name: rest.name
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: management-adapters-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Spring Integration Management API — Adapters. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-inbound-channel-adapters
+      description: List Inbound Channel Adapters
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-adapters.listinboundadapters
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-inbound-adapter-details
+      description: Get Inbound Adapter Details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-adapters.getinboundadapter
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: start-stop-inbound-adapter
+      description: Start or Stop Inbound Adapter
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: management-adapters.controlinboundadapter
+      with:
+        name: tools.name
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

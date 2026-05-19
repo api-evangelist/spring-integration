@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Spring Integration Management API — History
+  description: 'Spring Integration Management API — History. 1 operations. Lead operation: Get Message History Configuration.
+    Self-contained Naftiko capability covering one Spring Integration business surface.'
+  tags:
+  - Spring Integration
+  - History
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SPRING_INTEGRATION_API_KEY: SPRING_INTEGRATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: management-history
+    baseUri: http://localhost:8080/api
+    description: Spring Integration Management API — History business capability. Self-contained, no shared references.
+    resources:
+    - name: messageHistory
+      path: /messageHistory
+      operations:
+      - name: getmessagehistory
+        method: GET
+        description: Get Message History Configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: management-history-rest
+    port: 8080
+    description: REST adapter for Spring Integration Management API — History. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/messagehistory
+      name: messagehistory
+      description: REST surface for messageHistory.
+      operations:
+      - method: GET
+        name: getmessagehistory
+        description: Get Message History Configuration
+        call: management-history.getmessagehistory
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: management-history-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Spring Integration Management API — History. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: get-message-history-configuration
+      description: Get Message History Configuration
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: management-history.getmessagehistory
+      outputParameters:
+      - type: object
+        mapping: $.
