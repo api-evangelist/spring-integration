@@ -1,0 +1,226 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Integration Management API",
+    "version": "6.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Channels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Message Channels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/channels",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all registered Spring Integration message channels and their statistics"
+        },
+        {
+          "info": {
+            "name": "Get Channel Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/channels/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Channel bean name"
+              }
+            ]
+          },
+          "docs": "Returns statistics and configuration for a specific message channel"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Handlers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Message Handlers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/handlers",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all registered message handlers with their performance metrics"
+        },
+        {
+          "info": {
+            "name": "Get Handler Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/handlers/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Handler bean name"
+              }
+            ]
+          },
+          "docs": "Returns metrics for a specific message handler"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Adapters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Inbound Channel Adapters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/inboundChannelAdapters"
+          },
+          "docs": "Returns all inbound channel adapters and their running status"
+        },
+        {
+          "info": {
+            "name": "Get Inbound Adapter Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/inboundChannelAdapters/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns details and status for a specific inbound channel adapter"
+        },
+        {
+          "info": {
+            "name": "Start or Stop Inbound Adapter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/api/inboundChannelAdapters/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Controls the lifecycle of an inbound channel adapter"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Graph",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Integration Graph",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/graph"
+          },
+          "docs": "Returns the complete integration flow graph showing all channels, handlers, and their connections for visualization and analysis"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "History",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Message History Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/api/messageHistory"
+          },
+          "docs": "Returns the current message history tracking configuration"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Control",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send Control Bus Command",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/api/controlBus"
+          },
+          "docs": "Sends a SpEL expression command to the Spring Integration Control Bus"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1103 @@
+{
+  "item": [
+    {
+      "id": "3ff649fd-fab0-48dc-999f-0041bf1b6369",
+      "name": "Adapters",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5c653345-e67b-483f-87dc-577fee134ff0",
+          "name": "List Inbound Channel Adapters",
+          "request": {
+            "name": "List Inbound Channel Adapters",
+            "description": {
+              "content": "Returns all inbound channel adapters and their running status",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "inboundChannelAdapters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "63e91af2-2631-494e-a4d8-d31d4b28fc77",
+              "name": "List of inbound adapters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inboundChannelAdapters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"adapters\": [\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"running\": true,\n      \"outputChannelName\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"running\": false,\n      \"outputChannelName\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b72f9fda-cbff-41c6-af47-f013584ca7d1",
+          "name": "Get Inbound Adapter Details",
+          "request": {
+            "name": "Get Inbound Adapter Details",
+            "description": {
+              "content": "Returns details and status for a specific inbound channel adapter",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "inboundChannelAdapters",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0e20b00f-7554-4add-a7d1-5f49c2ae16bd",
+              "name": "Adapter details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inboundChannelAdapters",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"running\": true,\n  \"outputChannelName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d1d5d032-e117-4a55-9882-0d29af58e502",
+              "name": "Adapter not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inboundChannelAdapters",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eaaf9f0e-ff33-45ab-a72d-88b0d4f8389f",
+          "name": "Start or Stop Inbound Adapter",
+          "request": {
+            "name": "Start or Stop Inbound Adapter",
+            "description": {
+              "content": "Controls the lifecycle of an inbound channel adapter",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "inboundChannelAdapters",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a3121c12-83e4-4ef2-8234-8b364fd346ae",
+              "name": "Adapter state changed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inboundChannelAdapters",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dfc6760f-f94c-46f9-8d46-cb3e67f1334e",
+              "name": "Adapter not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inboundChannelAdapters",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "69cebfa8-8208-4afa-b693-74eb1a3bab10",
+      "name": "Channels",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0251f2bc-6b47-4d8c-b0ac-c94d12c7a2c1",
+          "name": "List All Message Channels",
+          "request": {
+            "name": "List All Message Channels",
+            "description": {
+              "content": "Returns all registered Spring Integration message channels and their statistics",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "channels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d8e9ff60-56fe-456d-bc06-455313b9e2c1",
+              "name": "List of channels",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "channels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"channels\": [\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"sendCount\": 2495,\n      \"sendErrorCount\": 2455,\n      \"meanSendRate\": 5097.827583551331,\n      \"meanErrorRate\": 2346.2730363934093,\n      \"meanSendDuration\": 6874.242675717938\n    },\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"sendCount\": 9513,\n      \"sendErrorCount\": 5300,\n      \"meanSendRate\": 3685.6364230771255,\n      \"meanErrorRate\": 307.4826436142941,\n      \"meanSendDuration\": 6981.8412510654525\n    }\n  ],\n  \"page\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1a535902-0858-4916-9c11-946005d7cd6d",
+          "name": "Get Channel Details",
+          "request": {
+            "name": "Get Channel Details",
+            "description": {
+              "content": "Returns statistics and configuration for a specific message channel",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "channels",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Channel bean name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "11348a9f-b203-4edb-83b1-ab1e7807a260",
+              "name": "Channel details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "channels",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Channel bean name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"sendCount\": 7214,\n  \"sendErrorCount\": 5703,\n  \"meanSendRate\": 4019.398978861002,\n  \"meanErrorRate\": 1031.968674624597,\n  \"meanSendDuration\": 3328.079518502528\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3fedff71-0935-44d6-a635-2306d485c611",
+              "name": "Channel not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "channels",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Channel bean name"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "711452ed-9523-44fa-aefc-0c87fb76abeb",
+      "name": "Control",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0ef1addf-a910-4afa-93ce-93511dd6fe39",
+          "name": "Send Control Bus Command",
+          "request": {
+            "name": "Send Control Bus Command",
+            "description": {
+              "content": "Sends a SpEL expression command to the Spring Integration Control Bus",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "controlBus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<string>"
+            }
+          },
+          "response": [
+            {
+              "id": "42a04706-f2ef-44a9-ad4d-470166af5613",
+              "name": "Command executed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "controlBus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "@myPoller.start()"
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "031b2df5-322e-4c85-8e18-c01ed2308f58",
+              "name": "Invalid command",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "controlBus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "@myPoller.start()"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "886c7b65-0b3c-4cfb-9a21-3d7a1b5d1ce8",
+      "name": "Graph",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "371e8d6d-9d3d-41d6-b71d-b89c1f9a1be3",
+          "name": "Get Integration Graph",
+          "request": {
+            "name": "Get Integration Graph",
+            "description": {
+              "content": "Returns the complete integration flow graph showing all channels, handlers, and their connections for visualization and analysis",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "graph"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "06874c98-90c2-48bf-a776-73bd863ab901",
+              "name": "Integration graph",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "graph"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"contentDescriptor\": {\n    \"providerVersion\": \"string\",\n    \"providerFormatVersion\": 592.1326796881476,\n    \"provider\": \"string\"\n  },\n  \"nodes\": [\n    {\n      \"nodeId\": 7557,\n      \"name\": \"string\",\n      \"componentType\": \"string\",\n      \"integrationPatternType\": \"string\"\n    },\n    {\n      \"nodeId\": 1368,\n      \"name\": \"string\",\n      \"componentType\": \"string\",\n      \"integrationPatternType\": \"string\"\n    }\n  ],\n  \"links\": [\n    {\n      \"from\": 2808,\n      \"to\": 9518,\n      \"type\": \"string\"\n    },\n    {\n      \"from\": 7044,\n      \"to\": 8965,\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "3670c741-3748-4cdb-9a09-f772073fb818",
+      "name": "Handlers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "41ff1f7b-3c64-4e8a-8907-c5d933298932",
+          "name": "List All Message Handlers",
+          "request": {
+            "name": "List All Message Handlers",
+            "description": {
+              "content": "Returns all registered message handlers with their performance metrics",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "handlers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "74b4f612-9f98-437b-98d7-0398e243950d",
+              "name": "List of handlers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "handlers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"handlers\": [\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"handleCount\": 6836,\n      \"handleErrorCount\": 950,\n      \"meanHandleRate\": 1811.870617362682,\n      \"meanHandleDuration\": 6894.846341458688,\n      \"inputChannelName\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"handleCount\": 1404,\n      \"handleErrorCount\": 6411,\n      \"meanHandleRate\": 6567.080190144388,\n      \"meanHandleDuration\": 1809.4443515675118,\n      \"inputChannelName\": \"string\"\n    }\n  ],\n  \"page\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "142ac055-e303-450e-b1b2-9766afee643e",
+          "name": "Get Handler Details",
+          "request": {
+            "name": "Get Handler Details",
+            "description": {
+              "content": "Returns metrics for a specific message handler",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "handlers",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Handler bean name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5f9e60df-2215-4d95-b8f3-b4dae964007d",
+              "name": "Handler details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "handlers",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Handler bean name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"handleCount\": 7734,\n  \"handleErrorCount\": 2111,\n  \"meanHandleRate\": 8496.505602299248,\n  \"meanHandleDuration\": 8678.565671593375,\n  \"inputChannelName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4af19ba3-e69b-459c-a0b1-76afa0a3ee53",
+              "name": "Handler not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "handlers",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Handler bean name"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ff58abb7-34ce-41a5-a6b5-ed95839de0df",
+      "name": "History",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0e345261-9fa7-479d-8c08-e0a734600721",
+          "name": "Get Message History Configuration",
+          "request": {
+            "name": "Get Message History Configuration",
+            "description": {
+              "content": "Returns the current message history tracking configuration",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "messageHistory"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a5b312cb-032b-4fbb-8d2f-97182be19207",
+              "name": "Message history config",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "messageHistory"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "198604d3-04b9-40fa-bb75-e70c58c63760",
+    "name": "Spring Integration Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Spring Integration Management REST API exposes endpoints for monitoring and controlling Spring Integration components at runtime. It provides access to message channel statistics, message handler metrics, integration graph visualization, and component lifecycle management (start/stop).\n\nContact Support:\n Name: Spring Team",
+      "type": "text/plain"
+    }
+  }
+}
