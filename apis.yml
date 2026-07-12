@@ -88,6 +88,10 @@ apis:
       - type: Maven Repository
         url: https://mvnrepository.com/artifact/org.springframework.integration/spring-integration-kafka
 common:
+  - type: VulnerabilityDisclosure
+    url: security/spring-integration-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/spring-integration-domain-security.yml
   - type: Website
     url: https://spring.io/projects/spring-integration
   - type: Documentation
