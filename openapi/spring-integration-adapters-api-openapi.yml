@@ -1,0 +1,102 @@
+openapi: 3.0.3
+info:
+  title: Spring Integration HTTP Inbound Gateway Adapters API
+  description: Spring Integration HTTP inbound channel adapters and gateways expose configurable HTTP endpoints that receive messages and route them into Spring Integration message flows. Inbound HTTP gateways support request/reply messaging while inbound channel adapters support one-way message ingestion.
+  version: 6.3.0
+  contact:
+    name: Spring Team
+    url: https://spring.io/projects/spring-integration
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080
+  description: Default HTTP inbound gateway server
+tags:
+- name: Adapters
+paths:
+  /inboundChannelAdapters:
+    get:
+      operationId: listInboundAdapters
+      summary: List Inbound Channel Adapters
+      description: Returns all inbound channel adapters and their running status
+      tags:
+      - Adapters
+      responses:
+        '200':
+          description: List of inbound adapters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AdapterList'
+  /inboundChannelAdapters/{name}:
+    get:
+      operationId: getInboundAdapter
+      summary: Get Inbound Adapter Details
+      description: Returns details and status for a specific inbound channel adapter
+      tags:
+      - Adapters
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Adapter details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Adapter'
+        '404':
+          description: Adapter not found
+    post:
+      operationId: controlInboundAdapter
+      summary: Start or Stop Inbound Adapter
+      description: Controls the lifecycle of an inbound channel adapter
+      tags:
+      - Adapters
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: string
+                  enum:
+                  - start
+                  - stop
+      responses:
+        '200':
+          description: Adapter state changed
+        '404':
+          description: Adapter not found
+components:
+  schemas:
+    Adapter:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        running:
+          type: boolean
+        outputChannelName:
+          type: string
+    AdapterList:
+      type: object
+      properties:
+        adapters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Adapter'

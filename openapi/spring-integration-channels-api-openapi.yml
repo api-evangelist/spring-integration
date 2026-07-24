@@ -1,0 +1,100 @@
+openapi: 3.0.3
+info:
+  title: Spring Integration HTTP Inbound Gateway Adapters Channels API
+  description: Spring Integration HTTP inbound channel adapters and gateways expose configurable HTTP endpoints that receive messages and route them into Spring Integration message flows. Inbound HTTP gateways support request/reply messaging while inbound channel adapters support one-way message ingestion.
+  version: 6.3.0
+  contact:
+    name: Spring Team
+    url: https://spring.io/projects/spring-integration
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080
+  description: Default HTTP inbound gateway server
+tags:
+- name: Channels
+paths:
+  /channels:
+    get:
+      operationId: listChannels
+      summary: List All Message Channels
+      description: Returns all registered Spring Integration message channels and their statistics
+      tags:
+      - Channels
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 0
+      - name: size
+        in: query
+        schema:
+          type: integer
+          default: 20
+      responses:
+        '200':
+          description: List of channels
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChannelList'
+  /channels/{name}:
+    get:
+      operationId: getChannel
+      summary: Get Channel Details
+      description: Returns statistics and configuration for a specific message channel
+      tags:
+      - Channels
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Channel bean name
+      responses:
+        '200':
+          description: Channel details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Channel'
+        '404':
+          description: Channel not found
+components:
+  schemas:
+    Channel:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+          description: Channel type (DirectChannel, QueueChannel, PublishSubscribeChannel, etc.)
+        sendCount:
+          type: integer
+          format: int64
+        sendErrorCount:
+          type: integer
+          format: int64
+        meanSendRate:
+          type: number
+        meanErrorRate:
+          type: number
+        meanSendDuration:
+          type: number
+        links:
+          type: array
+          items:
+            type: object
+    ChannelList:
+      type: object
+      properties:
+        channels:
+          type: array
+          items:
+            $ref: '#/components/schemas/Channel'
+        page:
+          type: object

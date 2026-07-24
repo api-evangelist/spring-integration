@@ -1,0 +1,44 @@
+openapi: 3.0.3
+info:
+  title: Spring Integration HTTP Inbound Gateway Adapters Inbound Adapter API
+  description: Spring Integration HTTP inbound channel adapters and gateways expose configurable HTTP endpoints that receive messages and route them into Spring Integration message flows. Inbound HTTP gateways support request/reply messaging while inbound channel adapters support one-way message ingestion.
+  version: 6.3.0
+  contact:
+    name: Spring Team
+    url: https://spring.io/projects/spring-integration
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080
+  description: Default HTTP inbound gateway server
+tags:
+- name: Inbound Adapter
+paths:
+  /integration/inbound:
+    post:
+      operationId: sendMessage
+      summary: Send Inbound Message
+      description: Sends a message to the Spring Integration inbound channel adapter. The message is placed on the configured message channel for downstream processing.
+      tags:
+      - Inbound Adapter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+          application/xml:
+            schema:
+              type: string
+          text/plain:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: Message accepted
+        '202':
+          description: Message accepted asynchronously
+        '400':
+          description: Bad request - could not process message

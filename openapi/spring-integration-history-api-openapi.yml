@@ -1,0 +1,31 @@
+openapi: 3.0.3
+info:
+  title: Spring Integration HTTP Inbound Gateway Adapters History API
+  description: Spring Integration HTTP inbound channel adapters and gateways expose configurable HTTP endpoints that receive messages and route them into Spring Integration message flows. Inbound HTTP gateways support request/reply messaging while inbound channel adapters support one-way message ingestion.
+  version: 6.3.0
+  contact:
+    name: Spring Team
+    url: https://spring.io/projects/spring-integration
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080
+  description: Default HTTP inbound gateway server
+tags:
+- name: History
+paths:
+  /messageHistory:
+    get:
+      operationId: getMessageHistory
+      summary: Get Message History Configuration
+      description: Returns the current message history tracking configuration
+      tags:
+      - History
+      responses:
+        '200':
+          description: Message history config
+          content:
+            application/json:
+              schema:
+                type: object

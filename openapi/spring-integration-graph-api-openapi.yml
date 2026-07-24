@@ -1,0 +1,69 @@
+openapi: 3.0.3
+info:
+  title: Spring Integration HTTP Inbound Gateway Adapters Graph API
+  description: Spring Integration HTTP inbound channel adapters and gateways expose configurable HTTP endpoints that receive messages and route them into Spring Integration message flows. Inbound HTTP gateways support request/reply messaging while inbound channel adapters support one-way message ingestion.
+  version: 6.3.0
+  contact:
+    name: Spring Team
+    url: https://spring.io/projects/spring-integration
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080
+  description: Default HTTP inbound gateway server
+tags:
+- name: Graph
+paths:
+  /graph:
+    get:
+      operationId: getIntegrationGraph
+      summary: Get Integration Graph
+      description: Returns the complete integration flow graph showing all channels, handlers, and their connections for visualization and analysis
+      tags:
+      - Graph
+      responses:
+        '200':
+          description: Integration graph
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationGraph'
+components:
+  schemas:
+    IntegrationGraph:
+      type: object
+      properties:
+        contentDescriptor:
+          type: object
+          properties:
+            providerVersion:
+              type: string
+            providerFormatVersion:
+              type: number
+            provider:
+              type: string
+        nodes:
+          type: array
+          items:
+            type: object
+            properties:
+              nodeId:
+                type: integer
+              name:
+                type: string
+              componentType:
+                type: string
+              integrationPatternType:
+                type: string
+        links:
+          type: array
+          items:
+            type: object
+            properties:
+              from:
+                type: integer
+              to:
+                type: integer
+              type:
+                type: string

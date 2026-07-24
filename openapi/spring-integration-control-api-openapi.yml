@@ -1,0 +1,36 @@
+openapi: 3.0.3
+info:
+  title: Spring Integration HTTP Inbound Gateway Adapters Control API
+  description: Spring Integration HTTP inbound channel adapters and gateways expose configurable HTTP endpoints that receive messages and route them into Spring Integration message flows. Inbound HTTP gateways support request/reply messaging while inbound channel adapters support one-way message ingestion.
+  version: 6.3.0
+  contact:
+    name: Spring Team
+    url: https://spring.io/projects/spring-integration
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080
+  description: Default HTTP inbound gateway server
+tags:
+- name: Control
+paths:
+  /controlBus:
+    post:
+      operationId: sendControlBusCommand
+      summary: Send Control Bus Command
+      description: Sends a SpEL expression command to the Spring Integration Control Bus
+      tags:
+      - Control
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              type: string
+              example: '@myPoller.start()'
+      responses:
+        '200':
+          description: Command executed
+        '400':
+          description: Invalid command

@@ -1,0 +1,95 @@
+openapi: 3.0.3
+info:
+  title: Spring Integration HTTP Inbound Gateway Adapters Handlers API
+  description: Spring Integration HTTP inbound channel adapters and gateways expose configurable HTTP endpoints that receive messages and route them into Spring Integration message flows. Inbound HTTP gateways support request/reply messaging while inbound channel adapters support one-way message ingestion.
+  version: 6.3.0
+  contact:
+    name: Spring Team
+    url: https://spring.io/projects/spring-integration
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080
+  description: Default HTTP inbound gateway server
+tags:
+- name: Handlers
+paths:
+  /handlers:
+    get:
+      operationId: listHandlers
+      summary: List All Message Handlers
+      description: Returns all registered message handlers with their performance metrics
+      tags:
+      - Handlers
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 0
+      - name: size
+        in: query
+        schema:
+          type: integer
+          default: 20
+      responses:
+        '200':
+          description: List of handlers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HandlerList'
+  /handlers/{name}:
+    get:
+      operationId: getHandler
+      summary: Get Handler Details
+      description: Returns metrics for a specific message handler
+      tags:
+      - Handlers
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Handler bean name
+      responses:
+        '200':
+          description: Handler details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Handler'
+        '404':
+          description: Handler not found
+components:
+  schemas:
+    HandlerList:
+      type: object
+      properties:
+        handlers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Handler'
+        page:
+          type: object
+    Handler:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        handleCount:
+          type: integer
+          format: int64
+        handleErrorCount:
+          type: integer
+          format: int64
+        meanHandleRate:
+          type: number
+        meanHandleDuration:
+          type: number
+        inputChannelName:
+          type: string
