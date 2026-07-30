@@ -6,6 +6,18 @@ description: >-
   It supports message channels, filters, transformers, routers, aggregators, and a wide range of inbound/outbound
   adapters for HTTP, JMS, AMQP, TCP, FTP, JDBC, email, and many more.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
 image: https://spring.io/img/projects/spring-integration.svg
 url: https://spring.io/projects/spring-integration
 created: '2026-03-27'
@@ -20,73 +32,166 @@ tags:
   - Messaging
   - Spring
 apis:
-  - aid: spring-integration:spring-integration-http
-    name: Spring Integration HTTP Adapter API
-    description: >-
-      HTTP inbound and outbound channel adapters for Spring Integration. Provides HTTP request-response messaging, REST
-      template integration, and configurable URL mapping for inbound HTTP gateways.
-    humanURL: https://docs.spring.io/spring-integration/docs/current/reference/html/http.html
-    baseURL: http://localhost:8080
-    tags:
-      - HTTP
-      - Inbound
-      - Messaging
-      - Outbound
-      - REST
-    properties:
-      - type: Documentation
-        url: https://docs.spring.io/spring-integration/docs/current/reference/html/http.html
-      - type: GitHubRepository
-        url: https://github.com/spring-projects/spring-integration
-      - type: OpenAPI
-        url: openapi/spring-integration-http-openapi.yml
-  - aid: spring-integration:spring-integration-management
-    name: Spring Integration Management API
-    description: >-
-      Management and monitoring REST API for Spring Integration. Exposes channel statistics, handler metrics, component
-      lifecycle control (start/stop), and message history configuration via HTTP endpoints.
-    humanURL: https://docs.spring.io/spring-integration/docs/current/reference/html/management.html
-    baseURL: http://localhost:8080/api
-    tags:
-      - Management
-      - Messaging
-      - Metrics
-      - Monitoring
-    properties:
-      - type: Documentation
-        url: https://docs.spring.io/spring-integration/docs/current/reference/html/management.html
-      - type: OpenAPI
-        url: openapi/spring-integration-management-openapi.yml
-  - aid: spring-integration:spring-integration-amqp
-    name: Spring Integration AMQP Adapter
-    description: >-
-      AMQP channel adapters and gateways for Spring Integration. Provides RabbitMQ message-driven and polling inbound
-      adapters, outbound channel adapters, and request/reply gateways.
-    humanURL: https://docs.spring.io/spring-integration/docs/current/reference/html/amqp.html
-    tags:
-      - AMQP
-      - Messaging
-      - RabbitMQ
-    properties:
-      - type: Documentation
-        url: https://docs.spring.io/spring-integration/docs/current/reference/html/amqp.html
-      - type: Maven Repository
-        url: https://mvnrepository.com/artifact/org.springframework.integration/spring-integration-amqp
-  - aid: spring-integration:spring-integration-kafka
-    name: Spring Integration Kafka Adapter
-    description: >-
-      Kafka channel adapters for Spring Integration. Provides message-driven inbound adapters, outbound channel
-      adapters, and request/reply gateways for Apache Kafka integration.
-    humanURL: https://docs.spring.io/spring-integration/docs/current/reference/html/kafka.html
-    tags:
-      - Event Streaming
-      - Kafka
-      - Messaging
-    properties:
-      - type: Documentation
-        url: https://docs.spring.io/spring-integration/docs/current/reference/html/kafka.html
-      - type: Maven Repository
-        url: https://mvnrepository.com/artifact/org.springframework.integration/spring-integration-kafka
+- aid: spring-integration:spring-integration-amqp
+  name: Spring Integration AMQP Adapter
+  description: >-
+    AMQP channel adapters and gateways for Spring Integration. Provides RabbitMQ message-driven and polling
+    inbound adapters, outbound channel adapters, and request/reply gateways.
+  humanURL: https://docs.spring.io/spring-integration/docs/current/reference/html/amqp.html
+  tags:
+  - AMQP
+  - Messaging
+  - RabbitMQ
+  properties:
+  - type: Documentation
+    url: https://docs.spring.io/spring-integration/docs/current/reference/html/amqp.html
+  - type: Maven Repository
+    url: >-
+      https://mvnrepository.com/artifact/org.springframework.integration/spring-integration-amqp
+- aid: spring-integration:spring-integration-kafka
+  name: Spring Integration Kafka Adapter
+  description: >-
+    Kafka channel adapters for Spring Integration. Provides message-driven inbound adapters, outbound
+    channel adapters, and request/reply gateways for Apache Kafka integration.
+  humanURL: https://docs.spring.io/spring-integration/docs/current/reference/html/kafka.html
+  tags:
+  - Event Streaming
+  - Kafka
+  - Messaging
+  properties:
+  - type: Documentation
+    url: https://docs.spring.io/spring-integration/docs/current/reference/html/kafka.html
+  - type: Maven Repository
+    url: >-
+      https://mvnrepository.com/artifact/org.springframework.integration/spring-integration-kafka
+- aid: spring-integration:spring-integration-adapters-api
+  name: Spring Integration Adapters API
+  description: The Adapters API from Spring Integration — 2 operation(s) for adapters.
+  humanURL: https://docs.spring.io/spring-integration/docs/current/reference/html/http.html
+  baseURL: http://localhost:8080
+  tags:
+  - Adapters
+  properties:
+  - type: OpenAPI
+    url: openapi/spring-integration-adapters-api-openapi.yml
+  - type: Documentation
+    url: https://docs.spring.io/spring-integration/docs/current/reference/html/http.html
+  - type: GitHubRepository
+    url: https://github.com/spring-projects/spring-integration
+  - type: Documentation
+    url: https://docs.spring.io/spring-integration/docs/current/reference/html/management.html
+- aid: spring-integration:spring-integration-channels-api
+  name: Spring Integration Channels API
+  description: The Channels API from Spring Integration — 2 operation(s) for channels.
+  humanURL: https://docs.spring.io/spring-integration/docs/current/reference/html/http.html
+  baseURL: http://localhost:8080
+  tags:
+  - Channels
+  properties:
+  - type: OpenAPI
+    url: openapi/spring-integration-channels-api-openapi.yml
+  - type: Documentation
+    url: https://docs.spring.io/spring-integration/docs/current/reference/html/http.html
+  - type: GitHubRepository
+    url: https://github.com/spring-projects/spring-integration
+  - type: Documentation
+    url: https://docs.spring.io/spring-integration/docs/current/reference/html/management.html
+- aid: spring-integration:spring-integration-control-api
+  name: Spring Integration Control API
+  description: The Control API from Spring Integration — 1 operation(s) for control.
+  humanURL: https://docs.spring.io/spring-integration/docs/current/reference/html/http.html
+  baseURL: http://localhost:8080
+  tags:
+  - Control
+  properties:
+  - type: OpenAPI
+    url: openapi/spring-integration-control-api-openapi.yml
+  - type: Documentation
+    url: https://docs.spring.io/spring-integration/docs/current/reference/html/http.html
+  - type: GitHubRepository
+    url: https://github.com/spring-projects/spring-integration
+  - type: Documentation
+    url: https://docs.spring.io/spring-integration/docs/current/reference/html/management.html
+- aid: spring-integration:spring-integration-gateway-api
+  name: Spring Integration Gateway API
+  description: The Gateway API from Spring Integration — 2 operation(s) for gateway.
+  humanURL: https://docs.spring.io/spring-integration/docs/current/reference/html/http.html
+  baseURL: http://localhost:8080
+  tags:
+  - Gateway
+  properties:
+  - type: OpenAPI
+    url: openapi/spring-integration-gateway-api-openapi.yml
+  - type: Documentation
+    url: https://docs.spring.io/spring-integration/docs/current/reference/html/http.html
+  - type: GitHubRepository
+    url: https://github.com/spring-projects/spring-integration
+  - type: Documentation
+    url: https://docs.spring.io/spring-integration/docs/current/reference/html/management.html
+- aid: spring-integration:spring-integration-graph-api
+  name: Spring Integration Graph API
+  description: The Graph API from Spring Integration — 1 operation(s) for graph.
+  humanURL: https://docs.spring.io/spring-integration/docs/current/reference/html/http.html
+  baseURL: http://localhost:8080
+  tags:
+  - Graph
+  properties:
+  - type: OpenAPI
+    url: openapi/spring-integration-graph-api-openapi.yml
+  - type: Documentation
+    url: https://docs.spring.io/spring-integration/docs/current/reference/html/http.html
+  - type: GitHubRepository
+    url: https://github.com/spring-projects/spring-integration
+  - type: Documentation
+    url: https://docs.spring.io/spring-integration/docs/current/reference/html/management.html
+- aid: spring-integration:spring-integration-handlers-api
+  name: Spring Integration Handlers API
+  description: The Handlers API from Spring Integration — 2 operation(s) for handlers.
+  humanURL: https://docs.spring.io/spring-integration/docs/current/reference/html/http.html
+  baseURL: http://localhost:8080
+  tags:
+  - Handlers
+  properties:
+  - type: OpenAPI
+    url: openapi/spring-integration-handlers-api-openapi.yml
+  - type: Documentation
+    url: https://docs.spring.io/spring-integration/docs/current/reference/html/http.html
+  - type: GitHubRepository
+    url: https://github.com/spring-projects/spring-integration
+  - type: Documentation
+    url: https://docs.spring.io/spring-integration/docs/current/reference/html/management.html
+- aid: spring-integration:spring-integration-history-api
+  name: Spring Integration History API
+  description: The History API from Spring Integration — 1 operation(s) for history.
+  humanURL: https://docs.spring.io/spring-integration/docs/current/reference/html/http.html
+  baseURL: http://localhost:8080
+  tags:
+  - History
+  properties:
+  - type: OpenAPI
+    url: openapi/spring-integration-history-api-openapi.yml
+  - type: Documentation
+    url: https://docs.spring.io/spring-integration/docs/current/reference/html/http.html
+  - type: GitHubRepository
+    url: https://github.com/spring-projects/spring-integration
+  - type: Documentation
+    url: https://docs.spring.io/spring-integration/docs/current/reference/html/management.html
+- aid: spring-integration:spring-integration-inbound-adapter-api
+  name: Spring Integration Inbound Adapter API
+  description: The Inbound Adapter API from Spring Integration — 1 operation(s) for inbound adapter.
+  humanURL: https://docs.spring.io/spring-integration/docs/current/reference/html/http.html
+  baseURL: http://localhost:8080
+  tags:
+  - Inbound Adapter
+  properties:
+  - type: OpenAPI
+    url: openapi/spring-integration-inbound-adapter-api-openapi.yml
+  - type: Documentation
+    url: https://docs.spring.io/spring-integration/docs/current/reference/html/http.html
+  - type: GitHubRepository
+    url: https://github.com/spring-projects/spring-integration
+  - type: Documentation
+    url: https://docs.spring.io/spring-integration/docs/current/reference/html/management.html
 common:
   - type: AgenticAccess
     url: agentic-access/spring-integration-agentic-access.yml
