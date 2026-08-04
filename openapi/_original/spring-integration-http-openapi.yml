@@ -1,0 +1,134 @@
+openapi: 3.0.3
+info:
+  title: Spring Integration HTTP Inbound Gateway API
+  description: >-
+    Spring Integration HTTP inbound channel adapters and gateways expose
+    configurable HTTP endpoints that receive messages and route them into
+    Spring Integration message flows. Inbound HTTP gateways support request/reply
+    messaging while inbound channel adapters support one-way message ingestion.
+  version: 6.3.0
+  contact:
+    name: Spring Team
+    url: https://spring.io/projects/spring-integration
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+  - url: http://localhost:8080
+    description: Default HTTP inbound gateway server
+paths:
+  /integration/inbound:
+    post:
+      operationId: sendMessage
+      summary: Send Inbound Message
+      description: >-
+        Sends a message to the Spring Integration inbound channel adapter.
+        The message is placed on the configured message channel for downstream processing.
+      tags:
+        - Inbound Adapter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+          application/xml:
+            schema:
+              type: string
+          text/plain:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: Message accepted
+        '202':
+          description: Message accepted asynchronously
+        '400':
+          description: Bad request - could not process message
+  /integration/gateway:
+    post:
+      operationId: sendAndReceive
+      summary: Send Message and Receive Reply
+      description: >-
+        Sends a message to the Spring Integration HTTP inbound gateway and
+        returns the reply. The request waits synchronously for a reply from
+        the integration flow.
+      tags:
+        - Gateway
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+          text/plain:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: Reply from the integration flow
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '408':
+          description: Request timeout waiting for reply
+  /integration/gateway/{path}:
+    get:
+      operationId: sendGetRequest
+      summary: Send GET Request to Integration Gateway
+      description: >-
+        Sends an HTTP GET request through the integration gateway. Path variables
+        and query parameters are mapped to message headers.
+      tags:
+        - Gateway
+      parameters:
+        - name: path
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Configurable path segment mapped to message header
+      responses:
+        '200':
+          description: Response from the integration flow
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: No route found for path
+    post:
+      operationId: sendPostRequest
+      summary: Send POST Request to Integration Gateway
+      description: Sends an HTTP POST request to a path-configured integration gateway
+      tags:
+        - Gateway
+      parameters:
+        - name: path
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '200':
+          description: Response from the integration flow
+          content:
+            application/json:
+              schema:
+                type: object
+components:
+  schemas: {}
+tags:
+  - name: Gateway
+  - name: Inbound Adapter

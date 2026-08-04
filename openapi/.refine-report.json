@@ -1,0 +1,28 @@
+{
+  "provider": "spring-integration",
+  "sources": [
+    "spring-integration-adapters-api-openapi.yml",
+    "spring-integration-channels-api-openapi.yml",
+    "spring-integration-control-api-openapi.yml",
+    "spring-integration-gateway-api-openapi.yml",
+    "spring-integration-graph-api-openapi.yml",
+    "spring-integration-handlers-api-openapi.yml",
+    "spring-integration-history-api-openapi.yml",
+    "spring-integration-inbound-adapter-api-openapi.yml"
+  ],
+  "outputs": [
+    "spring-integration-adapters-api-openapi.yml",
+    "spring-integration-channels-api-openapi.yml",
+    "spring-integration-control-api-openapi.yml",
+    "spring-integration-gateway-api-openapi.yml",
+    "spring-integration-graph-api-openapi.yml",
+    "spring-integration-handlers-api-openapi.yml",
+    "spring-integration-history-api-openapi.yml",
+    "spring-integration-inbound-adapter-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
