@@ -193,6 +193,9 @@ apis:
   - type: Documentation
     url: https://docs.spring.io/spring-integration/docs/current/reference/html/management.html
 common:
+  - type: License
+    name: Apache-2.0
+    url: https://github.com/spring-projects/spring-integration/blob/main/LICENSE
   - type: AgenticAccess
     url: agentic-access/spring-integration-agentic-access.yml
   - type: VulnerabilityDisclosure
