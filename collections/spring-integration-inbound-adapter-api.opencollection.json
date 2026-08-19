@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Integration HTTP Inbound Gateway Adapters Inbound Adapter API",
+    "version": "6.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Inbound Adapter",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send Inbound Message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/integration/inbound",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends a message to the Spring Integration inbound channel adapter. The message is placed on the configured message channel for downstream processing."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

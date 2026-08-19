@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Integration HTTP Inbound Gateway Adapters History API",
+    "version": "6.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "History",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Message History Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/messageHistory"
+          },
+          "docs": "Returns the current message history tracking configuration"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

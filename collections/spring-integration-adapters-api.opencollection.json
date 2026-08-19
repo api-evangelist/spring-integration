@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Integration HTTP Inbound Gateway Adapters API",
+    "version": "6.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Adapters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Inbound Channel Adapters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/inboundChannelAdapters"
+          },
+          "docs": "Returns all inbound channel adapters and their running status"
+        },
+        {
+          "info": {
+            "name": "Get Inbound Adapter Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/inboundChannelAdapters/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns details and status for a specific inbound channel adapter"
+        },
+        {
+          "info": {
+            "name": "Start or Stop Inbound Adapter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/inboundChannelAdapters/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Controls the lifecycle of an inbound channel adapter"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

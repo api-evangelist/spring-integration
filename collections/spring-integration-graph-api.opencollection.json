@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Integration HTTP Inbound Gateway Adapters Graph API",
+    "version": "6.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Graph",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Integration Graph",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/graph"
+          },
+          "docs": "Returns the complete integration flow graph showing all channels, handlers, and their connections for visualization and analysis"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

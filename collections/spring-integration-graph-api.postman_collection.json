@@ -1,0 +1,102 @@
+{
+  "item": [
+    {
+      "id": "0c911ecd-c0bc-4b76-89bd-1bc3e2e13d63",
+      "name": "Graph",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e34b6ef5-51a9-47be-b964-62c5cebc2266",
+          "name": "Get Integration Graph",
+          "request": {
+            "name": "Get Integration Graph",
+            "description": {
+              "content": "Returns the complete integration flow graph showing all channels, handlers, and their connections for visualization and analysis",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "graph"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ab26c974-df70-4aec-8f79-3a957294eee3",
+              "name": "Integration graph",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "graph"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"contentDescriptor\": {\n    \"providerVersion\": \"string\",\n    \"providerFormatVersion\": 3500.930162858843,\n    \"provider\": \"string\"\n  },\n  \"nodes\": [\n    {\n      \"nodeId\": 1595,\n      \"name\": \"string\",\n      \"componentType\": \"string\",\n      \"integrationPatternType\": \"string\"\n    },\n    {\n      \"nodeId\": 8252,\n      \"name\": \"string\",\n      \"componentType\": \"string\",\n      \"integrationPatternType\": \"string\"\n    }\n  ],\n  \"links\": [\n    {\n      \"from\": 9007,\n      \"to\": 4170,\n      \"type\": \"string\"\n    },\n    {\n      \"from\": 6020,\n      \"to\": 4766,\n      \"type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b659725d-ef4f-49d9-96f6-25f59671919b",
+    "name": "Spring Integration HTTP Inbound Gateway Adapters Graph API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Spring Integration HTTP inbound channel adapters and gateways expose configurable HTTP endpoints that receive messages and route them into Spring Integration message flows. Inbound HTTP gateways support request/reply messaging while inbound channel adapters support one-way message ingestion.\n\nContact Support:\n Name: Spring Team",
+      "type": "text/plain"
+    }
+  }
+}

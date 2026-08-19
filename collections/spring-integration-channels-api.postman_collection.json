@@ -1,0 +1,248 @@
+{
+  "item": [
+    {
+      "id": "5795ba4c-4e2a-4379-afb3-03f80e153f5d",
+      "name": "Channels",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "499710fd-45c9-4bd8-8613-df5b239c3d70",
+          "name": "List All Message Channels",
+          "request": {
+            "name": "List All Message Channels",
+            "description": {
+              "content": "Returns all registered Spring Integration message channels and their statistics",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "channels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ad097e7a-0906-47ef-8b05-6eb940d83efb",
+              "name": "List of channels",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "channels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"channels\": [\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"sendCount\": 759,\n      \"sendErrorCount\": 2974,\n      \"meanSendRate\": 1126.030381615184,\n      \"meanErrorRate\": 6990.161284930304,\n      \"meanSendDuration\": 8131.310886897623\n    },\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"sendCount\": 9250,\n      \"sendErrorCount\": 6024,\n      \"meanSendRate\": 9399.182218978021,\n      \"meanErrorRate\": 4305.765133113923,\n      \"meanSendDuration\": 4589.269835081002\n    }\n  ],\n  \"page\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e162543a-68e3-45f9-b28f-3cb2bc647976",
+          "name": "Get Channel Details",
+          "request": {
+            "name": "Get Channel Details",
+            "description": {
+              "content": "Returns statistics and configuration for a specific message channel",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "channels",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Channel bean name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "61823d11-b5d1-4e9a-b7cc-895f6215f64a",
+              "name": "Channel details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "channels",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Channel bean name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"sendCount\": 3541,\n  \"sendErrorCount\": 6092,\n  \"meanSendRate\": 3172.93907789596,\n  \"meanErrorRate\": 9521.77634562865,\n  \"meanSendDuration\": 3608.0914874951463\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "349b6cd2-8be4-4a8e-a7a8-3ef8981fc113",
+              "name": "Channel not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "channels",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Channel bean name"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "89e7bfc5-395e-4fcd-b02a-2d72a059a3c2",
+    "name": "Spring Integration HTTP Inbound Gateway Adapters Channels API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Spring Integration HTTP inbound channel adapters and gateways expose configurable HTTP endpoints that receive messages and route them into Spring Integration message flows. Inbound HTTP gateways support request/reply messaging while inbound channel adapters support one-way message ingestion.\n\nContact Support:\n Name: Spring Team",
+      "type": "text/plain"
+    }
+  }
+}

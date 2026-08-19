@@ -1,0 +1,248 @@
+{
+  "item": [
+    {
+      "id": "4cd9427e-f205-44d9-90aa-353d2014f868",
+      "name": "Handlers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "93b31188-ebeb-431a-a8c6-009dd3d47a48",
+          "name": "List All Message Handlers",
+          "request": {
+            "name": "List All Message Handlers",
+            "description": {
+              "content": "Returns all registered message handlers with their performance metrics",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "handlers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cdd92731-89ff-4030-ba9d-aa7bb64715d5",
+              "name": "List of handlers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "handlers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"handlers\": [\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"handleCount\": 7721,\n      \"handleErrorCount\": 3187,\n      \"meanHandleRate\": 9497.79337277088,\n      \"meanHandleDuration\": 3254.8569542575524,\n      \"inputChannelName\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"handleCount\": 9348,\n      \"handleErrorCount\": 5041,\n      \"meanHandleRate\": 7135.740209725587,\n      \"meanHandleDuration\": 1035.3767365985511,\n      \"inputChannelName\": \"string\"\n    }\n  ],\n  \"page\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "51996b1d-9c29-432c-a39f-5d9bb597896e",
+          "name": "Get Handler Details",
+          "request": {
+            "name": "Get Handler Details",
+            "description": {
+              "content": "Returns metrics for a specific message handler",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "handlers",
+                ":name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "name",
+                  "description": "(Required) Handler bean name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2e66ec84-16fa-45ed-a752-0ba2cc292ce6",
+              "name": "Handler details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "handlers",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Handler bean name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"type\": \"string\",\n  \"handleCount\": 3460,\n  \"handleErrorCount\": 8775,\n  \"meanHandleRate\": 698.3619020590315,\n  \"meanHandleDuration\": 1001.5779564798199,\n  \"inputChannelName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2215f056-dad5-4edd-b1b4-cfaeedbacc49",
+              "name": "Handler not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "handlers",
+                    ":name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "name",
+                      "description": "(Required) Handler bean name"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "59f7bce7-be12-4882-b1ef-1f82d07402ee",
+    "name": "Spring Integration HTTP Inbound Gateway Adapters Handlers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Spring Integration HTTP inbound channel adapters and gateways expose configurable HTTP endpoints that receive messages and route them into Spring Integration message flows. Inbound HTTP gateways support request/reply messaging while inbound channel adapters support one-way message ingestion.\n\nContact Support:\n Name: Spring Team",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Integration HTTP Inbound Gateway Adapters Channels API",
+    "version": "6.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Channels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Message Channels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/channels",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all registered Spring Integration message channels and their statistics"
+        },
+        {
+          "info": {
+            "name": "Get Channel Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/channels/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Channel bean name"
+              }
+            ]
+          },
+          "docs": "Returns statistics and configuration for a specific message channel"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

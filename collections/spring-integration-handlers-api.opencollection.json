@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Integration HTTP Inbound Gateway Adapters Handlers API",
+    "version": "6.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Handlers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Message Handlers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/handlers",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all registered message handlers with their performance metrics"
+        },
+        {
+          "info": {
+            "name": "Get Handler Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/handlers/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Handler bean name"
+              }
+            ]
+          },
+          "docs": "Returns metrics for a specific message handler"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
