@@ -23,6 +23,16 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "spring-integration-adapters-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spring-integration-channels-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spring-integration-control-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spring-integration-gateway-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spring-integration-graph-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spring-integration-handlers-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spring-integration-history-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spring-integration-inbound-adapter-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

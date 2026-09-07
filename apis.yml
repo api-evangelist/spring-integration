@@ -243,3 +243,5 @@ maintainers:
   - FN: Spring Team
     email: spring-projects@vmware.com
     url: https://spring.io/team
+x-parent: spring
+x-relationship: product

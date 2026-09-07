@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Spring Integration HTTP Inbound Gateway Adapters Channels API
   description: Spring Integration HTTP inbound channel adapters and gateways expose configurable HTTP endpoints that receive messages and route them into Spring Integration message flows. Inbound HTTP gateways support request/reply messaging while inbound channel adapters support one-way message ingestion.
@@ -65,6 +65,15 @@ paths:
           description: Channel not found
 components:
   schemas:
+    ChannelList:
+      type: object
+      properties:
+        channels:
+          type: array
+          items:
+            $ref: '#/components/schemas/Channel'
+        page:
+          type: object
     Channel:
       type: object
       properties:
@@ -89,12 +98,3 @@ components:
           type: array
           items:
             type: object
-    ChannelList:
-      type: object
-      properties:
-        channels:
-          type: array
-          items:
-            $ref: '#/components/schemas/Channel'
-        page:
-          type: object
