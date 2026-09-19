@@ -131,6 +131,8 @@ apis:
   humanURL: https://docs.spring.io/spring-integration/docs/current/reference/html/http.html
   baseURL: http://localhost:8080
   tags:
+  - Gateways
+  tags_raw:
   - Gateway
   properties:
   - type: OpenAPI
