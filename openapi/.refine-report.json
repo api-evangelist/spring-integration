@@ -1,38 +1,36 @@
 {
   "provider": "spring-integration",
   "sources": [
-    "spring-integration-adapters-api-openapi.yml",
-    "spring-integration-channels-api-openapi.yml",
-    "spring-integration-control-api-openapi.yml",
-    "spring-integration-gateway-api-openapi.yml",
-    "spring-integration-graph-api-openapi.yml",
-    "spring-integration-handlers-api-openapi.yml",
-    "spring-integration-history-api-openapi.yml",
-    "spring-integration-inbound-adapter-api-openapi.yml"
+    "_original/spring-integration-http-openapi.yml",
+    "_original/spring-integration-management-openapi.yml"
   ],
   "outputs": [
+    "spring-integration-gateway-api-openapi.yml",
+    "spring-integration-inbound-adapter-api-openapi.yml",
     "spring-integration-adapters-api-openapi.yml",
     "spring-integration-channels-api-openapi.yml",
     "spring-integration-control-api-openapi.yml",
-    "spring-integration-gateway-api-openapi.yml",
     "spring-integration-graph-api-openapi.yml",
     "spring-integration-handlers-api-openapi.yml",
-    "spring-integration-history-api-openapi.yml",
-    "spring-integration-inbound-adapter-api-openapi.yml"
+    "spring-integration-history-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
-    "spring-integration-adapters-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "spring-integration-channels-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "spring-integration-control-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "spring-integration-gateway-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "spring-integration-graph-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "spring-integration-handlers-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "spring-integration-history-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "spring-integration-inbound-adapter-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "spring-integration-http-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spring-integration-management-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "spring-integration-adapters-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-integration-channels-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-integration-control-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-integration-gateway-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-integration-graph-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-integration-handlers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-integration-history-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-integration-inbound-adapter-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

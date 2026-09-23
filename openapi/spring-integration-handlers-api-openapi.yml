@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Spring Integration HTTP Inbound Gateway Adapters Handlers API
-  description: Spring Integration HTTP inbound channel adapters and gateways expose configurable HTTP endpoints that receive messages and route them into Spring Integration message flows. Inbound HTTP gateways support request/reply messaging while inbound channel adapters support one-way message ingestion.
+  title: Spring Integration Management Handlers API
+  description: The Spring Integration Management REST API exposes endpoints for monitoring and controlling Spring Integration components at runtime. It provides access to message channel statistics, message handler metrics, integration graph visualization, and component lifecycle management (start/stop).
   version: 6.3.0
   contact:
     name: Spring Team
@@ -10,8 +10,8 @@ info:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
 servers:
-- url: http://localhost:8080
-  description: Default HTTP inbound gateway server
+- url: http://localhost:8080/api
+  description: Default management API base path
 tags:
 - name: Handlers
 paths:
@@ -65,6 +65,15 @@ paths:
           description: Handler not found
 components:
   schemas:
+    HandlerList:
+      type: object
+      properties:
+        handlers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Handler'
+        page:
+          type: object
     Handler:
       type: object
       properties:
@@ -84,12 +93,3 @@ components:
           type: number
         inputChannelName:
           type: string
-    HandlerList:
-      type: object
-      properties:
-        handlers:
-          type: array
-          items:
-            $ref: '#/components/schemas/Handler'
-        page:
-          type: object
