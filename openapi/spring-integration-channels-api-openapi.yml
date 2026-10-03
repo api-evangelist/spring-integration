@@ -65,6 +65,15 @@ paths:
           description: Channel not found
 components:
   schemas:
+    ChannelList:
+      type: object
+      properties:
+        channels:
+          type: array
+          items:
+            $ref: '#/components/schemas/Channel'
+        page:
+          type: object
     Channel:
       type: object
       properties:
@@ -89,12 +98,3 @@ components:
           type: array
           items:
             type: object
-    ChannelList:
-      type: object
-      properties:
-        channels:
-          type: array
-          items:
-            $ref: '#/components/schemas/Channel'
-        page:
-          type: object
