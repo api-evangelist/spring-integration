@@ -82,6 +82,13 @@ paths:
           description: Adapter not found
 components:
   schemas:
+    AdapterList:
+      type: object
+      properties:
+        adapters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Adapter'
     Adapter:
       type: object
       properties:
@@ -93,10 +100,3 @@ components:
           type: boolean
         outputChannelName:
           type: string
-    AdapterList:
-      type: object
-      properties:
-        adapters:
-          type: array
-          items:
-            $ref: '#/components/schemas/Adapter'
