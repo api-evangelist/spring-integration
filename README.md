@@ -1,4 +1,4 @@
-# Spring Integration (spring-integration)
+# Spring Integration
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,129 +66,171 @@
 
 Spring Integration extends the Spring programming model to support enterprise integration patterns (EIP), providing lightweight messaging within Spring-based applications and integration with external systems via declarative adapters. It supports message channels, filters, transformers, routers, aggregators, and a wide range of inbound/outbound adapters for HTTP, JMS, AMQP, TCP, FTP, JDBC, email, and many more.
 
-**APIs.json:** [https://spring.io/projects/spring-integration](https://spring.io/projects/spring-integration)
+**Areas:** AMQP · Enterprise Integration · Event-Driven · Integration Patterns · Java · Messaging · Spring
 
-## Scope
+## Spring Integration on APIs.io
 
-- **Type:** Index
+Everything profiled for Spring Integration is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/spring-integration/](https://apis.io/providers/spring-integration/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (10)
 
-- AMQP
-- Enterprise Integration
-- Event-Driven
-- Integration Patterns
-- Java
-- Messaging
-- Spring
+- [Spring Integration AMQP Adapter](https://apis.io/apis/spring-integration/spring-integration-amqp/) — AMQP channel adapters and gateways for Spring Integration. Provides RabbitMQ message-driven and polling inbound adapters, outbound channel adapters, and…
+- [Spring Integration Kafka Adapter](https://apis.io/apis/spring-integration/spring-integration-kafka/) — Kafka channel adapters for Spring Integration. Provides message-driven inbound adapters, outbound channel adapters, and request/reply gateways for Apache…
+- [Spring Integration Adapters API](https://apis.io/apis/spring-integration/spring-integration-adapters-api/) — The Adapters API from Spring Integration — 2 operation(s) for adapters.
+- [Spring Integration Channels API](https://apis.io/apis/spring-integration/spring-integration-channels-api/) — The Channels API from Spring Integration — 2 operation(s) for channels.
+- [Spring Integration Control API](https://apis.io/apis/spring-integration/spring-integration-control-api/) — The Control API from Spring Integration — 1 operation(s) for control.
+- [Spring Integration Gateway API](https://apis.io/apis/spring-integration/spring-integration-gateway-api/) — The Gateway API from Spring Integration — 2 operation(s) for gateway.
+- [Spring Integration Graph API](https://apis.io/apis/spring-integration/spring-integration-graph-api/) — The Graph API from Spring Integration — 1 operation(s) for graph.
+- [Spring Integration Handlers API](https://apis.io/apis/spring-integration/spring-integration-handlers-api/) — The Handlers API from Spring Integration — 2 operation(s) for handlers.
+- [Spring Integration History API](https://apis.io/apis/spring-integration/spring-integration-history-api/) — The History API from Spring Integration — 1 operation(s) for history.
+- [Spring Integration Inbound Adapter API](https://apis.io/apis/spring-integration/spring-integration-inbound-adapter-api/) — The Inbound Adapter API from Spring Integration — 1 operation(s) for inbound adapter.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-27
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Spring Integration HTTP Adapter API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-HTTP inbound and outbound channel adapters for Spring Integration. Provides HTTP request-response messaging, REST template integration, and configurable URL mapping for inbound HTTP gateways.
+- [Spring Integration Agentic Access](https://apis.io/agentic-access/spring-integration/spring-integration-agentic-access/)
 
-- **Human URL:** [https://docs.spring.io/spring-integration/docs/current/reference/html/http.html](https://docs.spring.io/spring-integration/docs/current/reference/html/http.html)
-- **Base URL:** `http://localhost:8080`
+#### JSON Schema (1)
 
-#### Tags
+The data models the API reads and writes.
 
-- HTTP
-- Inbound
-- Messaging
-- Outbound
-- REST
+- [Spring Integration Message](https://apis.io/schemas/spring-integration/spring-integration-message/)
 
-#### Properties
+#### JSON Structure (1)
 
-- [Documentation](https://docs.spring.io/spring-integration/docs/current/reference/html/http.html)
-- [GitHub Repository](https://github.com/spring-projects/spring-integration)
-- [OpenAPI](openapi/spring-integration-http-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/spring-integration-http.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/spring-integration-http.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Data models expressed in JSON Structure.
 
-### Spring Integration Management API
+- [Spring Integration Channel Structure](https://apis.io/json-structure/spring-integration/spring-integration-channel-structure/)
 
-Management and monitoring REST API for Spring Integration. Exposes channel statistics, handler metrics, component lifecycle control (start/stop), and message history configuration via HTTP endpoints.
+#### JSON-LD (1)
 
-- **Human URL:** [https://docs.spring.io/spring-integration/docs/current/reference/html/management.html](https://docs.spring.io/spring-integration/docs/current/reference/html/management.html)
-- **Base URL:** `http://localhost:8080/api`
+Linked-data contexts for the provider's vocabulary.
 
-#### Tags
+- [Spring Integration Context](https://apis.io/jsonld/spring-integration/spring-integration-context/)
 
-- Management
-- Messaging
-- Metrics
-- Monitoring
+#### Vocabulary (1)
 
-#### Properties
+The provider's domain terms, defined.
 
-- [Documentation](https://docs.spring.io/spring-integration/docs/current/reference/html/management.html)
-- [OpenAPI](openapi/spring-integration-management-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/spring-integration-management.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/spring-integration-management.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Spring Integration Vocabulary](https://apis.io/vocabularies/spring-integration/spring-integration-vocabulary/)
 
-### Spring Integration AMQP Adapter
+#### Examples (1)
 
-AMQP channel adapters and gateways for Spring Integration. Provides RabbitMQ message-driven and polling inbound adapters, outbound channel adapters, and request/reply gateways.
+Example requests and responses.
 
-- **Human URL:** [https://docs.spring.io/spring-integration/docs/current/reference/html/amqp.html](https://docs.spring.io/spring-integration/docs/current/reference/html/amqp.html)
+- [Spring Integration Get Graph Example](https://apis.io/examples/spring-integration/spring-integration-get-graph-example/)
 
-#### Tags
+#### Collections (10)
 
-- AMQP
-- Messaging
-- RabbitMQ
+Postman and Open Collection request collections.
 
-#### Properties
+- [Spring Integration HTTP Inbound Gateway Adapters API](https://apis.io/collections/spring-integration/open-spring-integration-adapters-api/)
+- [Spring Integration HTTP Inbound Gateway Adapters Channels API](https://apis.io/collections/spring-integration/open-spring-integration-channels-api/)
+- [Spring Integration HTTP Inbound Gateway Adapters Control API](https://apis.io/collections/spring-integration/open-spring-integration-control-api/)
+- [Spring Integration HTTP Inbound Adapters Gateway API](https://apis.io/collections/spring-integration/open-spring-integration-gateway-api/)
+- [Spring Integration HTTP Inbound Gateway Adapters Graph API](https://apis.io/collections/spring-integration/open-spring-integration-graph-api/)
+- [Spring Integration HTTP Inbound Gateway Adapters Handlers API](https://apis.io/collections/spring-integration/open-spring-integration-handlers-api/)
+- [Spring Integration HTTP Inbound Gateway Adapters History API](https://apis.io/collections/spring-integration/open-spring-integration-history-api/)
+- [Spring Integration HTTP Inbound Gateway API](https://apis.io/collections/spring-integration/open-spring-integration-http/)
+- [Spring Integration HTTP Inbound Gateway Adapters Inbound Adapter API](https://apis.io/collections/spring-integration/open-spring-integration-inbound-adapter-api/)
+- [Spring Integration Management API](https://apis.io/collections/spring-integration/open-spring-integration-management/)
 
-- [Documentation](https://docs.spring.io/spring-integration/docs/current/reference/html/amqp.html)
-- [Maven  Repository](https://mvnrepository.com/artifact/org.springframework.integration/spring-integration-amqp)
-- [Postman Collection](collections/spring-integration-http.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/spring-integration-http.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/spring-integration-management.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/spring-integration-management.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Governance rules (2)
 
-### Spring Integration Kafka Adapter
+Spectral rulesets for the provider's contracts.
 
-Kafka channel adapters for Spring Integration. Provides message-driven inbound adapters, outbound channel adapters, and request/reply gateways for Apache Kafka integration.
+- [Spring Integration — jsonschema rules](https://apis.io/rules/spring-integration/spring-integration-jsonschema-spectral-rules/)
+- [Spring Integration API Rules](https://apis.io/rules/spring-integration/spring-integration-rules/)
 
-- **Human URL:** [https://docs.spring.io/spring-integration/docs/current/reference/html/kafka.html](https://docs.spring.io/spring-integration/docs/current/reference/html/kafka.html)
+#### Security (2)
 
-#### Tags
+Authentication, trust centre, and vulnerability disclosure.
 
-- Event Streaming
-- Kafka
-- Messaging
+- [Spring Integration Domain Security](https://apis.io/security/spring-integration/spring-integration-domain-security/)
+- [Spring Integration Vulnerability Disclosure](https://apis.io/security/spring-integration/spring-integration-vulnerability-disclosure/)
 
-#### Properties
+#### Plans and pricing (1)
 
-- [Documentation](https://docs.spring.io/spring-integration/docs/current/reference/html/kafka.html)
-- [Maven  Repository](https://mvnrepository.com/artifact/org.springframework.integration/spring-integration-kafka)
-- [Postman Collection](collections/spring-integration-http.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/spring-integration-http.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/spring-integration-management.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/spring-integration-management.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Published plans, tiers and prices.
 
-## Common Properties
+- [Spring Integration Plans Pricing](https://apis.io/plans/spring-integration/spring-integration-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Spring Integration Rate Limits](https://apis.io/rate-limits/spring-integration/spring-integration-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Spring Integration Finops](https://apis.io/finops/spring-integration/spring-integration-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://spring.io/projects/spring-integration)
 - [Documentation](https://docs.spring.io/spring-integration/reference/)
-- [GitHub Organization](https://github.com/spring-projects/spring-integration)
-- [Getting Started](https://spring.io/guides/gs/integration)
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/spring-integration)
-- [Maven  Repository](https://mvnrepository.com/artifact/org.springframework.integration)
-- [Releases](https://github.com/spring-projects/spring-integration/releases)
+- [Getting started](https://spring.io/guides/gs/integration)
 - [Blog](https://spring.io/blog/category/integration)
-- [Sample  Projects](https://github.com/spring-projects/spring-integration-samples)
+- [GitHub](https://github.com/spring-projects/spring-integration)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Spring Team
-**Email:** spring-projects@vmware.com
-**URL:** https://spring.io/team
+**Kin Score 32.0** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 46.2 |
+| Contract governance | 13.6 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 21.4 |
+| Access clarity | 7.9 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/spring-integration/](https://apis.io/providers/spring-integration/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Spring Integration: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/spring-integration/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
